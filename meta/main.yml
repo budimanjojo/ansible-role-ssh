@@ -1,0 +1,34 @@
+---
+galaxy_info:
+  role_name: ssh
+  author: Budiman JOJO
+  description: Role to manage SSH configs
+  issue_tracker_url: http://github.com.com/budimanjojo/ansible-role-ssh/issues
+  license: license (MIT)
+  min_ansible_version: 2.1
+  platforms:
+  - name: Archlinux
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+
+  galaxy_tags:
+  - system
+  - packaging
+  - linux
+  - server
+  - development
+  - ubuntu
+  - archlinux
+  - debian
+  - security
+
+dependencies: []
