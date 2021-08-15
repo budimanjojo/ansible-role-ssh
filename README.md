@@ -8,7 +8,7 @@ Supported OS Families
 
 - Ubuntu (tested)
 - Arch Linux (tested)
-- Redhat (untested)
+- Redhat (tested)
 
 Role Variables
 --------------
