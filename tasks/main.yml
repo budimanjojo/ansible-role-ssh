@@ -1,6 +1,6 @@
 ---
 - name: Gather os specific variables
-  include_vars: "{{ lookup('first_found', items) }}"
+  ansible.builtin.include_vars: "{{ lookup('first_found', items) }}"
   vars:
     items:
       files:
@@ -11,7 +11,7 @@
       - ./vars
 
 - name: Ensure Openssh is installed
-  package:
+  ansible.builtin.package:
     name: "{{ ssh_packages }}"
     state: present
 
@@ -21,7 +21,7 @@
   register: ssh_sshd_config_d_exists
 
 - name: Configure sshd_config
-  template:
+  ansible.builtin.template:
     src: etc/ssh/sshd_config.j2
     dest: "{{ ssh_directory_path }}/sshd_config"
     mode: 0600
@@ -32,7 +32,7 @@
   - Restart ssh
 
 - name: Register ssh host keys
-  find:
+  ansible.builtin.find:
     paths: "{{ ssh_directory_path }}"
     file_type: file
     patterns: 'ssh_host_*'
@@ -40,7 +40,7 @@
   register: ssh_host_keys
 
 - name: Ensure sshd host keys permissions are correct
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     mode: 0600
     owner: root
@@ -55,7 +55,7 @@
   register: ssh_ssh_config_d_exists
 
 - name: Configure ssh_config
-  template:
+  ansible.builtin.template:
     src: etc/ssh/ssh_config.j2
     dest: "{{ ssh_directory_path }}/ssh_config"
     mode: 0644
@@ -63,6 +63,6 @@
     group: root
 
 - name: Ensure ssh service is enabled on boot
-  service:
+  ansible.builtin.service:
     name: "{{ ssh_service_name }}"
     enabled: yes
